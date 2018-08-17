@@ -1,7 +1,7 @@
 {
-  "name": "transactions",
+  "name": "currency-calculator-1-1",
   "description": "",
-  "homepage": "https://stackblitz.com/edit/transactions",
+  "homepage": "https://stackblitz.com/edit/currency-calculator-1-1",
   "dependencies": {
     "react": "16.4.2",
     "react-dom": "16.4.2",

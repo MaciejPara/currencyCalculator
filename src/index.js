@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Hello from './Hello';
+import Header from './Header';
 import Content from './Content';
 import './style.css';
 
@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: 'Currency calculator'
+      text: 'Currency calculator'
     };
   }
 
@@ -18,7 +18,7 @@ class App extends Component {
       <div className="mainContainer">
         <div className="banner"></div>
         <div className="text-center">
-          <Hello name={this.state.name} />
+          <Header name={this.state.text} />
         </div>
         <div className="content">
           <Content/>

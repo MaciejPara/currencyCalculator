@@ -6,23 +6,35 @@ class Content extends Component {
     super();
     this.euro;
     this.pln;
+    this.curr = ['PLN', 'EUR', 'GBP', 'USD'];
     this.state={
-      result:0
+      result:0,
+      GBP: 4.81,
+      USD: 3.79,
+      EUR: 4.31,
+      PLN: 1
     };
   }
-  count(){
-    let euro = document.getElementById('euro').value;
-    let pln = document.getElementById('pln').value;
-    
-    euro = parseFloat(euro);
-    pln = parseFloat(pln);
+  count = () =>{
 
     let result = euro*pln;
     
     result =  result.toFixed(2);
     this.setState({result :  result});
-  }
+  };
+  setSelect = () =>{
+    
+    return (
+      <select>
+        <option>{this.curr[0]}</option>
+        <option selected="selected">{this.curr[1]}</option>
+        <option>{this.curr[2]}</option>
+        <option>{this.curr[3]}</option>
+      </select>
+    );
+  };
   render() {
+    
     if(this.state.result>0){
     
       return (
@@ -31,22 +43,18 @@ class Content extends Component {
           <div className="text-center">
             <div className="row">
               <div className="col-5">
-                <select>
-                  <option>EUR</option>
-                </select>
+                {this.setSelect}
               </div>
               <div className="col-2"></div>
               <div className="col-5">
-                <select>
-                  <option>PLN</option>
-                </select>
+                {this.setSelect}
               </div>
             </div>
 
             <div className="row">
-              <div className="col-5"><input type="number" id="euro" defaultValue={4.44}/></div>
+              <div className="col-5"><input type="number" id="euro" defaultValue={}/></div>
               <div className="col-2"><img src="https://image.flaticon.com/icons/svg/25/25677.svg"/></div>
-              <div className="col-5"><input type="number" id="pln" defaultValue={100}/></div>
+              <div className="col-5"><input type="number" id="pln" defaultValue={}/></div>
             </div>  
             
               <p className="button" onClick={this.count.bind(this)}>Count</p>
@@ -67,21 +75,17 @@ class Content extends Component {
           <div className="text-center">
             <div className="row">
               <div className="col-5">
-                <select>
-                  <option>EUR</option>
-                </select>
+                {this.setSelect()}                 
               </div>
               <div className="col-2"></div>
               <div className="col-5">
-                <select>
-                  <option>PLN</option>
-                </select>
+                {this.setSelect()}   
               </div>
             </div>
             <div className="row">
-              <div className="col-5"><input type="number" id="euro" defaultValue={4.44}/></div>
+              <div className="col-5"><input type="number" id="euro" defaultValue={this.state.eur}/></div>
               <div className="col-2"><img src="https://image.flaticon.com/icons/svg/25/25677.svg"/></div>
-              <div className="col-5"><input type="number" id="pln" defaultValue={100}/></div>
+              <div className="col-5"><input type="number" id="pln" defaultValue={this.state.usd}/></div>
             </div>  
             
               <p className="button" onClick={this.count.bind(this)}>Count</p>
