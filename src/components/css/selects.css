@@ -1,0 +1,22 @@
+select {
+  margin: 1%;
+  background-color: transparent;
+  border: none;
+  color: cornsilk;
+  border-bottom: 1px solid lime;
+  cursor: pointer;
+  box-shadow: none;
+}
+option {
+  background-color: limegreen;
+}
+select:focus {
+  outline: none;
+}
+.Selects {
+  overflow: hidden;
+}
+.selectsInner div {
+  width: 50%;
+  float: left;
+}
