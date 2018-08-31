@@ -1,0 +1,9 @@
+.Panel {
+  background-color: rgb(65, 66, 66);
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+}
+.inner h2 {
+  font-size: 18px;
+  margin-bottom: 2%;
+}
