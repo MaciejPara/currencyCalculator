@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maciejpara.github.io/currencyCalculator.github.io/",
+  "homepage": "https://maciejpara.github.io/currencyCalculator/",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "gh-pages": "^1.2.0",
