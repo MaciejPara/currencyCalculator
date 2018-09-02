@@ -4,9 +4,10 @@ import "./css/inputs.css";
 //stateless functional component
 class Inputs extends Component {
   render() {
+    const { rate, click } = this.props;
     return (
       <div className="Inputs">
-        <Input rate={this.props.rate} />
+        <Input rate={rate} click={click} />
       </div>
     );
   }

@@ -3,18 +3,19 @@ import React, { Component } from "react";
 class Input extends Component {
   constructor(props) {
     super(props);
+    this.newVal = 0;
     this.state = {
       defValues: [{ firstVal: 1 }, { secVal: 0 }]
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-
-  calctransaction(inputValue) {
-    let newVal = inputValue * this.props.rate;
-    newVal = newVal.toFixed(2);
-    console.log(newVal + "--result");
+  calcTransaction(inputValue) {
+    this.newVal = inputValue * this.props.rate;
+    this.newVal = this.newVal.toFixed(2);
+    console.log(this.newVal + "--result");
 
     this.setState({
-      defValues: [{ firstVal: inputValue }, { secVal: newVal }]
+      defValues: [{ firstVal: inputValue }, { secVal: this.newVal }]
     }); // update state with new values
   } // calcTransaction -- calculate transaction by inputValue * current rate
   updateSecInput() {
@@ -26,6 +27,14 @@ class Input extends Component {
       />
     );
   } // updateSecInput method -- like name sayed
+  handleClick(e) {
+    const { click } = this.props;
+
+    let res = this.state.defValues[0].firstVal * this.props.rate;
+    res = res.toFixed(2);
+
+    click(this.state.defValues[0].firstVal, res);
+  }
   render() {
     let val = this.state.defValues[0].firstVal * this.props.rate;
     val = val.toFixed(2);
@@ -39,7 +48,7 @@ class Input extends Component {
                 value={this.state.defValues[0].firstVal}
                 className="form-control"
                 onChange={e => {
-                  this.calctransaction(e.target.value);
+                  this.calcTransaction(e.target.value);
                   this.updateSecInput();
                 }}
               />
@@ -49,6 +58,7 @@ class Input extends Component {
                 className="img-fluid"
                 src="https://image.flaticon.com/icons/svg/25/25677.svg"
                 alt="img"
+                onClick={this.handleClick}
               />
             </div>
             <div className="col-5">

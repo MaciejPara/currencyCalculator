@@ -3,11 +3,11 @@ import Inputs from "./inputs";
 import "./css/exchange.css";
 //stateless functional component
 class Exchange extends Component {
-  state = {};
   render() {
+    const { rate, click } = this.props;
     return (
       <div className="Exchange">
-        <Inputs rate={this.props.rate} />
+        <Inputs rate={rate} click={click} />
       </div>
     );
   }

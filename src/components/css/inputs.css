@@ -15,6 +15,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: inherit;
   border: none;
   box-shadow: none;
+  color: lime;
 }
 .Input input:read-only {
   background-color: inherit;
