@@ -9,7 +9,7 @@ class Select extends Component {
     };
   }
   handleChange(sel) {
-    console.log(sel.target.value);
+    //console.log(sel.target.value);
     let val = sel.target.value;
     //this.setState({ value: val });
   }

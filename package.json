@@ -1,15 +1,13 @@
 {
-  "name": "transactions",
-  "description": "",
-  "homepage": "https://stackblitz.com/edit/transactions",
-  "dependencies": {
-    "react": "16.4.2",
-    "react-dom": "16.4.2",
-    "react-scripts": "1.0.10",
-    "fas": "1.0.4"
-  },
+  "name": "app",
   "version": "0.1.0",
   "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
