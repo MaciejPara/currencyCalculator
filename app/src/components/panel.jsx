@@ -22,134 +22,102 @@ class Panel extends Component {
         { id: 9, name: "SEK" },
         { id: 10, name: "USD" }
       ],
-      defaultCurrency1: { id: 1, value: "PLN", rate: 0 },
-      defaultCurrency2: { id: 2, value: "EUR", rate: 0 },
+      Currency1: { id: 1, value: "EUR", rate: 0 }, // here you can set default value of first currency
+      Currency2: { id: 2, value: "PLN", rate: 0 }, // here you can set default value of second currency
       rate: 0
     };
     this.handleSelect = this.handleSelect.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
   }
-  getDataFromApi(first, second) {
-    let getData = (one, two) => {
-      if (one === "PLN" || one === "") {
-        if (two === first) {
+  componentDidMount() {
+    this.getDataFromApi(this.state.Currency1.value, this.state.Currency2.value);
+  }
+  getDataFromApi(firstCurrency, secondCurrency) {
+    let getData = (firstCurrency, secondCurrency) => {
+      if (firstCurrency === "PLN" || firstCurrency === "") {
+        if (secondCurrency === firstCurrency) {
           this.val1 = 1;
-          this.updateData(this.val1, this.val2);
+          this.updateRate(this.val1, this.val2);
           this.setState({
-            defaultCurrency1: [{ id: 1, value: one, rate: this.val1 }]
+            Currency1: [{ id: 1, value: firstCurrency, rate: this.val1 }]
           });
         } else {
           this.val1 = 1;
-          this.updateData(this.val1, this.val2);
+          this.updateRate(this.val1, this.val2);
           this.setState({
-            defaultCurrency1: [{ id: 1, value: one, rate: this.val1 }]
+            Currency1: [{ id: 1, value: firstCurrency, rate: this.val1 }]
           });
-          //console.log(this.state.defaultCurrency1);
         }
       } else {
-        if (two === first) {
+        if (secondCurrency === firstCurrency) {
           this.setState({ rate: 1 });
         } else {
-          fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${one}/`)
+          fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${firstCurrency}/`)
             .then(response => response.json())
             .then(findresponse => {
-              //console.log(findresponse.rates[0].mid);
               this.val1 = findresponse.rates[0].mid;
 
               this.val1 = this.val1.toFixed(2);
-              //console.log(this.state.defaultCurrency1);
               this.setState({
-                defaultCurrency1: [{ id: 1, value: one, rate: this.val1 }]
+                Currency1: [{ id: 1, value: firstCurrency, rate: this.val1 }]
               });
-              //console.log(val);
-              //this.setState({ rate: val });
-              this.updateData(this.val1, this.val2);
+              this.updateRate(this.val1, this.val2);
             });
         }
       }
-      if (two === "PLN" || two === "") {
-        if (two === first) {
+      if (secondCurrency === "PLN" || secondCurrency === "") {
+        if (secondCurrency === firstCurrency) {
           this.val2 = 1;
-          this.updateData(this.val1, this.val2);
+          this.updateRate(this.val1, this.val2);
           this.setState({
-            defaultCurrency1: [{ id: 2, value: one, rate: this.val2 }]
+            Currency2: [{ id: 2, value: firstCurrency, rate: this.val2 }]
           });
         } else {
           this.val2 = 1;
-          this.updateData(this.val1, this.val2);
+          this.updateRate(this.val1, this.val2);
           this.setState({
-            defaultCurrency1: [{ id: 2, value: one, rate: this.val2 }]
+            Currency2: [{ id: 2, value: firstCurrency, rate: this.val2 }]
           });
-          //console.log(this.state.defaultCurrency1);
         }
       } else {
-        if (two === first) {
+        if (secondCurrency === firstCurrency) {
           this.setState({ rate: 1 });
         } else {
-          fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${two}/`)
+          fetch(
+            `http://api.nbp.pl/api/exchangerates/rates/A/${secondCurrency}/`
+          )
             .then(response => response.json())
             .then(findresponse => {
-              //console.log(findresponse.rates[0].mid);
               this.val2 = findresponse.rates[0].mid;
-              //console.log(this.state.defaultCurrency2);
               this.val2 = this.val2.toFixed(2);
               this.setState({
-                defaultCurrency2: [{ id: 2, value: two, rate: this.val2 }]
+                Currency2: [{ id: 2, value: secondCurrency, rate: this.val2 }]
               });
-              //this.setState({ rate: val });
-              this.updateData(this.val1, this.val2);
+              this.updateRate(this.val1, this.val2);
             });
         }
       }
-    };
+    }; // function which get data from NBP api
 
-    //console.log(first, second);
-
-    getData(first, second);
+    getData(firstCurrency, secondCurrency);
   }
-  updateData(first, second) {
-    if (first) {
-      if (second) {
-        if (first > second) {
-          //console.log(first, second);
-          let res = first / second;
-          //console.log(res);
-          res = res.toFixed(2);
-          this.setState({ rate: res });
-        } else {
-          //console.log(first, second);
-          let res = first / second;
-          res = res.toFixed(2);
-          this.setState({ rate: res });
-          //console.log(res);
-        }
+  updateRate(firstCurValue, secondCurValue) {
+    if (firstCurValue) {
+      if (secondCurValue) {
+        let res = firstCurValue / secondCurValue;
+        res = res.toFixed(2);
+        this.setState({ rate: res });
       } else {
-        //console.log(first, second);
-        this.setState({ rate: first });
+        this.setState({ rate: firstCurValue });
       }
-    } else if (second) {
-      //console.log(first, second);
-      this.setState({ rate: second });
+    } else if (secondCurValue) {
+      this.setState({ rate: secondCurValue });
     }
   }
-  componentDidMount() {
-    //console.log(
-    //   this.state.defaultCurrency1.value,
-    //   this.state.defaultCurrency2.value
-    // );
-    this.getDataFromApi(
-      this.state.defaultCurrency1.value,
-      this.state.defaultCurrency2.value
-    );
-    // this.setState({
-    //   defaultCurrency: [{ id: 1, value: "PLN" }, { id: 2, value: "GBP" }]
-    // });
-  }
   handleSelect(e) {
-    //console.log(e + "-------updated values");
     this.setState({
-      defaultCurrency1: { id: 1, value: e[0], rate: this.val1 },
-      defaultCurrency2: { id: 2, value: e[1], rate: this.val2 }
+      Currency1: { id: 1, value: e[0], rate: this.val1 },
+      Currency2: { id: 2, value: e[1], rate: this.val2 }
     });
     this.getDataFromApi(e[0], e[1]);
   }
@@ -163,10 +131,7 @@ class Panel extends Component {
           <h2>I'd like to change</h2>
         </div>
         <Selects
-          defaultCurrencys={[
-            this.state.defaultCurrency1,
-            this.state.defaultCurrency2
-          ]}
+          defaultCurrencys={[this.state.Currency1, this.state.Currency2]}
           currencys={this.state.currency}
           onSelect={this.handleSelect}
         />

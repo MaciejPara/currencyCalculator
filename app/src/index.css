@@ -63,7 +63,9 @@ body {
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
 }
-
+.mb-auto {
+  margin-top: 50px;
+}
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
   border-bottom-color: rgba(255, 255, 255, 0.25);
@@ -76,9 +78,6 @@ body {
 .nav-masthead .active {
   color: #fff;
   border-bottom-color: #fff;
-}
-
-@media (min-width: 48em) {
 }
 
 /*
@@ -97,4 +96,25 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 23em) {
+  body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  #root {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  .p-5 {
+    padding: 5px !important;
+  }
+  .inner .cover {
+    padding: 0;
+  }
 }

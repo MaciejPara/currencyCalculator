@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import Select from "./select";
 import "./css/selects.css";
 //stateless functional component
 class Selects extends Component {

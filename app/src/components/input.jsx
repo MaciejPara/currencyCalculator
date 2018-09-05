@@ -26,7 +26,7 @@ class Input extends Component {
         className="form-control"
       />
     );
-  } // updateSecInput method -- like name sayed
+  } // updateSecInput method -- update result of calculation
   handleClick(e) {
     const { click } = this.props;
 
@@ -34,10 +34,11 @@ class Input extends Component {
     res = res.toFixed(2);
 
     click(this.state.defValues[0].firstVal, res);
-  }
+  } // handleClick method -- should send click to parent and switching sides od currencys
   render() {
     let val = this.state.defValues[0].firstVal * this.props.rate;
     val = val.toFixed(2);
+    //default value of result
     return (
       <div className="Input">
         <form>
@@ -55,7 +56,7 @@ class Input extends Component {
             </div>
             <div className="col-2">
               <img
-                className="img-fluid"
+                // className="img-fluid"
                 src="https://image.flaticon.com/icons/svg/25/25677.svg"
                 alt="img"
                 onClick={this.handleClick}

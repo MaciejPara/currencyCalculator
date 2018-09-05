@@ -1,8 +1,9 @@
-h1, p {
+h1,
+p {
   font-family: Lato;
 }
-.mainContainer{
-  background-color: rgb(124,132,142);
+.mainContainer {
+  background-color: rgb(124, 132, 142);
   height: 100vh;
   padding: 10%;
   transition: 1s;
@@ -12,52 +13,51 @@ h1, p {
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   overflow: hidden;
 }
-.polygon{
+.polygon {
   padding: 5%;
   color: white;
-  background-color: rgb(83,89,101);
+  background-color: rgb(83, 89, 101);
   height: 50vh;
   border-radius: 20px;
-  -webkit-box-shadow: 0px 0px 123px 36px rgba(67,72,77,1);
-  -moz-box-shadow: 0px 0px 123px 36px rgba(67,72,77,1);
-  box-shadow: 0px 0px 123px 36px rgba(67,72,77,1);
+  -webkit-box-shadow: 0px 0px 123px 36px rgba(67, 72, 77, 1);
+  -moz-box-shadow: 0px 0px 123px 36px rgba(67, 72, 77, 1);
+  box-shadow: 0px 0px 123px 36px rgba(67, 72, 77, 1);
   margin-top: 2em;
   width: 100%;
   overflow: hidden;
 }
-.polygon select{
+.polygon select {
   background-color: inherit;
   border: none;
   color: lightgreen;
   margin-bottom: 2em;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.polygon input{
+.polygon input {
   background-color: inherit;
   color: white;
   width: 50%;
-  border:0;
+  border: 0;
   font-weight: bold;
   font-size: 20px;
   text-align: center;
-  border-bottom: 1px solid rgb(80,116,177);
+  border-bottom: 1px solid rgb(80, 116, 177);
   border-radius: 2px;
 }
-.col-2{
-  overflow:hidden;
-
+.col-2 {
+  overflow: hidden;
 }
-.col-2 img{
-  width: 80%;;
+.col-2 img {
+  width: 80%;
 }
-.col-2 img:hover{
-  cursor:pointer;
+.col-2 img:hover {
+  cursor: pointer;
 }
-.button{
+.button {
   padding: 2%;
   color: white;
   background-color: lime;
@@ -65,13 +65,13 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   margin-top: 3em;
 }
-.button:hover{
+.button:hover {
   color: green;
   background-color: limegreen;
   cursor: pointer;
 }
-@media(min-width:1000px){
-  .mainContainer{
+@media (min-width: 1000px) {
+  .mainContainer {
     padding: 10% 25% 10% 25%;
     transition: 1s;
   }
